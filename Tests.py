@@ -32,10 +32,12 @@ def test_hh_search(browser):
 
 # Если текущая страница - это страница с выводом вакансий, -
 # выполнить тест на применение фильтра по з/п. Если нет -
-# перейти к странице с вакансиями:
+# перейти к странице с вакансиями и применить фильтр:
 def test_hh_filter(browser):
     hh_second_page = HhRuPages.FilterHelper(browser)
     if "https://spb.hh.ru/search/vacancy" in hh_second_page.getUrl():
+
+        # Задание нижнего/верхнего предела доступного по фильтру з/п:
         hh_second_page.chooseMoneyLimit("high")
     else:
         hh_second_page.goToPage('https://spb.hh.ru/vacancies/testirovshik')
