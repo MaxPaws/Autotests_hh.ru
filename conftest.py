@@ -1,3 +1,5 @@
+# Подготовка webdriver для Chrome:
+
 import pytest
 from selenium import webdriver
 
@@ -6,4 +8,4 @@ from selenium import webdriver
 def browser():
     driver = webdriver.Chrome(executable_path=r"./chromedriver/chromedriver.exe")
     yield driver
-    # driver.quit()
+    driver.quit()

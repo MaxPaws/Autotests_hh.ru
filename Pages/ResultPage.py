@@ -1,14 +1,9 @@
-from BaseApp import BasePage
+# Страница с результатами поиска
+
 from selenium.webdriver.common.by import By
+from BaseApp import BasePage
 
-
-# Локаторы для поля ввода на главной странице:
-class HhSearchLocators:
-    LOCATOR_HH_SEARCH_FIELD = (By.XPATH, "//input[@data-qa='search-input']")
-    LOCATOR_HH_SEARCH_BUTTON = (By.XPATH, "//button[@data-qa='search-button']")
-
-
-# Локаторы для фильтра на странице с вакансиями:
+# Локаторы для фильтра:
 class HhFilterLocators:
     LOCATOR_HH_FILTER_BUTTON = (By.LINK_TEXT, "Фильтры (1)")
 
@@ -16,29 +11,7 @@ class HhFilterLocators:
     LOCATOR_HH_FILTER_MONEY_ELEMENTS = (By.XPATH, "//span[@data-qa='serp__cluster-item-title' and contains(text(), "
                                                  "'руб.')]")
 
-
-# Класс для поискового поля главной страницы:
-class SearchHelper(BasePage):
-
-    # Ввод пользовательского текста в поле для поиска:
-    def enterWord(self, word):
-        search_field = self.findElement(HhSearchLocators.LOCATOR_HH_SEARCH_FIELD)
-        search_field.click()
-        search_field.send_keys(word)
-        return search_field
-
-    # Нажатие на кнопку поиска:
-    def clickSearchButton(self):
-        return self.findElement(HhSearchLocators.LOCATOR_HH_SEARCH_BUTTON).click()
-
-    # Ояистка поискового поля:
-    def clearSearchField(self):
-        search_field = self.findElement(HhSearchLocators.LOCATOR_HH_SEARCH_FIELD)
-        search_field.clear()
-        return search_field
-
-
-# Класс для элементов фильтраа а странице с вакансиями:
+# Класс с элементами фильтра:
 class FilterHelper(BasePage):
 
     # Нахождение всех элементов фильтрации з/п и применение необходимого, в зависимости от указания
